@@ -1,7 +1,5 @@
-# deployment-templates
-Genesis based deployment templates for various boshreleases
+# concourse-deployment
 
-Herein lies a bunch of bare-bones templates for getting started with various bosh releases.
-
-Feel free to pick and choose deployments + sites as you see fit, and copy them into your
-own deployment repo.
+Herein lies a collection of templates to be used as global/site templates with 
+[genesis](https://github.com/starkandwayne/genesis), for deploying
+[Concourse CI](https://github.com/concourse/concourse)
