@@ -1,3 +1,6 @@
+meta:
+  authentication: (( param "Please specify an authentication parameters here (basic_auth_*/github_auth.*)" ))
+
 jobs:
 - name: haproxy
   templates:
@@ -18,6 +21,7 @@ jobs:
         publicly_viewable: true
         postgresql_database: atc
         external_url: (( param "What is the external URL for this concourse?" ))
+        .: (( inject meta.authentication ))
 
         #FIXME: force auth creds
 
