@@ -1,0 +1,21 @@
+---
+resource_pools:
+- name: concourse
+  network: concourse
+  cloud_properties: {}
+  stemcell: (( grab meta.stemcell ))
+
+compilation:
+  workers: 2
+  network: concourse
+  cloud_properties: {}
+
+jobs:
+- name: web
+  resource_pool: concourse
+- name: db
+  resource_pool: concourse
+- name: haproxy
+  resource_pool: concourse
+- name: worker
+  resource_pool: concourse
