@@ -1,0 +1,50 @@
+jobs:
+- name: haproxy
+  templates:
+    - name: haproxy
+      properties:
+        ha_proxy:
+          backend_port: 8080
+          backend_servers: (( grab jobs.web.networks.0.static_ips ))
+          ssl_pem: (( param "Want ssl? define a pem" ))
+
+- name: web
+  templates:
+    - name: tsa
+      properties: {}
+    - name: atc
+      properties:
+        bind_port: 8080
+        publicly_viewable: true
+        postgresql_database: atc
+        external_url: (( param "What is the external URL for this concourse?" ))
+
+        #FIXME: force auth creds
+
+- name: db
+  templates:
+    - name: postgresql
+      properties:
+        databases:
+          - name: atc
+            role: atc
+            password: (( param "Specify a password to access the concourse database" ))
+
+
+- name: worker
+  templates:
+    - name: slack-notification-resource
+      properties: {}
+    - name: groundcrew
+      properties:
+        additional_resource_types:
+          - image: /var/vcap/packages/slack-notification-resource
+            type: slack-notification
+    - name: baggageclaim
+      properties: {}
+    - name: garden
+      properties:
+        garden:
+          listen_network: tcp
+          listen_address: 0.0.0.0:7777
+          enable_graph_cleanup: true

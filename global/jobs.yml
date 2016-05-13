@@ -1,0 +1,42 @@
+---
+jobs:
+  - name: haproxy
+    instances: 1
+    resource_pool: (( param "Define a resource pool for haproxy" ))
+    networks:      (( param "Define the network that haproxy should run on" ))
+    templates:
+      - release: cf-haproxy
+        name: haproxy
+
+  - name: web
+    instances: 1
+    resource_pool: (( param "Define a resource pool for web" ))
+    networks:      (( param "Define the network that web should run on" ))
+    templates:
+      - release: concourse
+        name: tsa
+      - release: concourse
+        name: atc
+
+  - name: db
+    instances: 1
+    resource_pool: (( param "Define a resource pool for the database" ))
+    networks:      (( param "Define the network that the database should run on" ))
+    persistent_disk: (( param "Define the persistent disk for your DB node" )))
+    templates:
+      - release: concourse
+        name: postgresql
+
+  - name: worker
+    instances: 3
+    resource_pool: (( param "Define a resource pool for workers" ))
+    networks:      (( param "Define the network that workers should run on" ))
+    templates:
+      - release: concourse
+        name: groundcrew
+      - release: concourse
+        name: baggageclaim
+      - release: slack-notification-resource
+        name: slack-notification-resource
+      - release: garden-linux
+        name: garden
