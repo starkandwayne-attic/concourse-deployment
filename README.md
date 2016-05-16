@@ -1,46 +1,33 @@
 concourse Deployments
-==============================
+======================================
 
-This repository contains the YAML templates that make up a series of
-concourse BOSH deployments, using the format prescribed by the
-[Genesis][1] utility.
+This repository acts as an upstream repository of YAML templates for use
+in a concourse BOSH deployment, managed via the [Gensis][1] utility.
 
-The configuration is broken up into three logical strata: _global_,
-_site_, and _environment_.  _Global_ defines the universal aspects of any
-deployment, including overall job structure, constituent BOSH releases,
-and invariant (or default) properties.  Each _site_ represents a single
-IaaS (an AWS VPC, a vSphere cluster, etc.), and further refines the global
-configuration for that infrastructure.  Each _environment_ represents a
-single BOSH deployment, with specific network numbering, credentials,
-domain names, etc.
+Creating a new concourse Deployment
+======================================
 
-For more information, see the READMEs scattered throughout this repository,
-and check out `genesis help`.  You can download the Genesis program from
-[Github][1]
+To create a new [Genesis][1] based deployment of concourse, run
+`genesis new deployment --template concourse`. This will create a new repo
+called `concourse-deployments` for you, and pull in the
+`github.com/starkandwayne/concourse-deployment` repo as the `upstream` remote,
+copying the contents of `global/*` into the new `concourse-deployments` repo.
 
-Quickstart
-----------
+This allows you to easily diverge from the upstream templates to suit your
+environment, and while also being able to pull in changes from upstream down
+the road.
 
-To create a new site:
+Custom Sites
+======================================
 
-  genesis new site NAME
+To create a new site, run `genesis new site --template <site-type>`. This
+will copy in the latest data from the `upstream` remote's `.templates/<site-type>`
+directory.
 
-To create a new environment
+Notes
+======================================
 
-  cd site-name/
-  genesis new environment NAME
-
-To build the full BOSH manifest for an environment:
-
-  cd site-name/env-name
-  make manifest
-
-... and then deploy it:
-
-  cd site-name/env-name
-  make deploy
-
-
-
+For more information, check out the [Genesis][1] repo, or `genesis help`.
+You can download the Genesis program from [Github][1]
 
 [1]: https://github.com/starkandwayne/genesis
