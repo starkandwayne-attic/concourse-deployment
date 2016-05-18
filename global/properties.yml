@@ -1,5 +1,5 @@
 meta:
-  authentication: (( param "Please specify an authentication parameters here (basic_auth_*/github_auth.*)" ))
+  authentication: (( param "Specify an authentication parameter (basic_auth_*/github_auth.*)" ))
 
 jobs:
 - name: haproxy
