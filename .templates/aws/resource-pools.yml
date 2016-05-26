@@ -6,12 +6,6 @@ resource_pools:
     cloud_properties:
       instance_type: m3.medium
 
-  - name: discovery
-    network: concourse
-    stemcell: (( grab meta.stemcell ))
-    cloud_properties:
-      instance_type: m3.medium
-
   - name: db
     network: concourse
     stemcell: (( grab meta.stemcell ))
@@ -40,8 +34,6 @@ compilation:
 jobs:
   - name: haproxy
     resource_pool: haproxy
-  - name: discovery
-    resource_pool: discovery
   - name: web
     resource_pool: web
   - name: db
