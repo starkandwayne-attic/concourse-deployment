@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+echo "Generating credentials for Concource CI"
+safe gen ${VAULT_PREFIX}/web_ui password -- \
+     gen ${VAULT_PREFIX}/atcdb password > /dev/null

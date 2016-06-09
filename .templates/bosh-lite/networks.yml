@@ -2,7 +2,11 @@
 networks:
 - name: concourse
   type: manual
-  subnets: (( param "Specify your concourse subnet" ))
+  subnets:
+  - range: 10.244.18.0/24
+    gateway: 10.244.18.1
+    static:
+    - 10.244.18.2 - 10.244.18.60
 
 jobs:
 - name: web

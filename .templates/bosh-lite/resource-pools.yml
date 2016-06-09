@@ -4,6 +4,9 @@ resource_pools:
   network: concourse
   cloud_properties: {}
   stemcell: (( grab meta.stemcell ))
+  env:
+    bosh:
+      password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
 compilation:
   workers: 2
@@ -15,6 +18,7 @@ jobs:
   resource_pool: concourse
 - name: db
   resource_pool: concourse
+  persistent_disk: 10240
 - name: haproxy
   resource_pool: concourse
 - name: worker
