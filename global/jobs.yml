@@ -38,5 +38,5 @@ jobs:
         name: baggageclaim
       - release: slack-notification-resource
         name: slack-notification-resource
-      - release: garden-linux
+      - release: garden-runc
         name: garden

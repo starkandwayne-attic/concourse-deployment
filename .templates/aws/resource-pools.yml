@@ -1,28 +1,34 @@
 ---
+meta:
+  availability_zone: (( param "What availability zone should your concourse VMs be in?" ))
 resource_pools:
   - name: web
     network: concourse
     stemcell: (( grab meta.stemcell ))
     cloud_properties:
       instance_type: m3.medium
+      availability_zone: (( grab meta.availability_zone ))
 
   - name: db
     network: concourse
     stemcell: (( grab meta.stemcell ))
     cloud_properties:
       instance_type: m3.medium
+      availability_zone: (( grab meta.availability_zone ))
 
   - name: workers
     network: concourse
     stemcell: (( grab meta.stemcell ))
     cloud_properties:
       instance_type: m4.large
+      availability_zone: (( grab meta.availability_zone ))
 
   - name: haproxy
     network: concourse
     stemcell: (( grab meta.stemcell ))
     cloud_properties:
       instance_type: m4.large
+      availability_zone: (( grab meta.availability_zone ))
 
 compilation:
   workers: 3
@@ -30,6 +36,7 @@ compilation:
   reuse_compilation_vms: true
   cloud_properties:
     instance_type: c4.large
+    availability_zone: (( grab meta.availability_zone ))
 
 jobs:
   - name: haproxy
