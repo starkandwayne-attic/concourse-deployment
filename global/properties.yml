@@ -30,7 +30,7 @@ jobs:
         databases:
           - name: atc
             role: atc
-            password: (( param "Specify a password to access the concourse database" ))
+            password: (( vault meta.vault_prefix "/atcdb:password" ))
 
 
 - name: worker

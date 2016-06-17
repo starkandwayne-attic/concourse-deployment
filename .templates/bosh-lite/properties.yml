@@ -5,13 +5,6 @@ meta:
     basic_auth_password: (( vault meta.vault_prefix "/web_ui:password" ))
 
 jobs:
-- name: db
-  templates:
-  - name: postgresql
-    properties:
-      databases:
-      - name: atc
-        password: (( vault meta.vault_prefix "/atcdb:password" ))
 - name: web
   templates:
   - name: atc

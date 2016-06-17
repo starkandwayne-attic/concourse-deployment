@@ -1,0 +1,53 @@
+---
+resource_pools:
+  - name: web
+    network: concourse
+    stemcell: (( grab meta.stemcell ))
+    cloud_properties:
+      ram: 3840
+      disk: 4096
+      cpu: 2
+
+  - name: db
+    network: concourse
+    stemcell: (( grab meta.stemcell ))
+    cloud_properties:
+      ram: 3840
+      disk: 4096
+      cpu: 2
+
+  - name: workers
+    network: concourse
+    stemcell: (( grab meta.stemcell ))
+    cloud_properties:
+      ram: 7680
+      disk: 32768
+      cpu: 2
+
+  - name: haproxy
+    network: concourse
+    stemcell: (( grab meta.stemcell ))
+    cloud_properties:
+      ram: 3840
+      disk: 4096
+      cpu: 2
+
+compilation:
+  workers: 3
+  network: concourse
+  reuse_compilation_vms: true
+  cloud_properties:
+    cpu: 2
+    disk: 8096
+    ram: 3840
+
+
+jobs:
+  - name: haproxy
+    resource_pool: haproxy
+  - name: web
+    resource_pool: web
+  - name: db
+    resource_pool: db
+  - name: worker
+    resource_pool: workers
