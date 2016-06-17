@@ -8,11 +8,11 @@ jobs:
 - name: web
   networks:
   - name: concourse
-    static_ips: (( static_ips 0, 1, 2, 3, 5 ))
+    static_ips: (( static_ips 0, 1, 2 ))
 - name: haproxy
   networks:
   - name: concourse
-    static_ips: (( static_ips 10, 11, 12, 13, 14 ))
+    static_ips: (( static_ips 3, 4 ))
 - name: worker
   networks:
   - name: concourse
