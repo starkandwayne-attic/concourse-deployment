@@ -22,7 +22,7 @@ jobs:
     instances: 1
     resource_pool: (( param "Define a resource pool for the database" ))
     networks:      (( param "Define the network that the database should run on" ))
-    persistent_disk: (( param "Define the persistent disk for your DB node" )))
+    persistent_disk: 10240
     templates:
       - release: concourse
         name: postgresql
