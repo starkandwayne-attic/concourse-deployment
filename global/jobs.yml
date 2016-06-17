@@ -26,6 +26,8 @@ jobs:
     templates:
       - release: concourse
         name: postgresql
+      - release: shield
+        name: shield-agent
 
   - name: worker
     instances: 3
