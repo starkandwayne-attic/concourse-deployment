@@ -1,5 +1,7 @@
 meta:
   authentication: (( param "Please specify an authentication parameters here (basic_auth_*/github_auth.*)" ))
+  external_url: (( param "What is the external URL for this concourse?" ))
+  ssl_pem: (( param "Want ssl? define a pem" ))
 
 jobs:
 - name: haproxy
@@ -9,7 +11,7 @@ jobs:
         ha_proxy:
           backend_port: 8080
           backend_servers: (( grab jobs.web.networks.0.static_ips ))
-          ssl_pem: (( param "Want ssl? define a pem" ))
+          ssl_pem: (( grap meta.ssl_pem ))
 
 - name: web
   templates:
@@ -20,8 +22,8 @@ jobs:
         bind_port: 8080
         publicly_viewable: true
         postgresql_database: atc
-        external_url: (( param "What is the external URL for this concourse?" ))
         .: (( inject meta.authentication ))
+        external_url: (( grab meta.external_url ))
 
 - name: db
   templates:
