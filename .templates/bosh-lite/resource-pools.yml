@@ -4,9 +4,6 @@ resource_pools:
   network: concourse
   cloud_properties: {}
   stemcell: (( grab meta.stemcell ))
-  env:
-    bosh:
-      password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
 compilation:
   workers: 2

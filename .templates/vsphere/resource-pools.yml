@@ -7,9 +7,6 @@ resource_pools:
       ram: 3840
       disk: 4096
       cpu: 2
-    env:
-      bosh:
-        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: db
     network: concourse
@@ -18,9 +15,6 @@ resource_pools:
       ram: 3840
       disk: 4096
       cpu: 2
-    env:
-      bosh:
-        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: workers
     network: concourse
@@ -29,9 +23,6 @@ resource_pools:
       ram: 7680
       disk: 32768
       cpu: 2
-    env:
-      bosh:
-        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: haproxy
     network: concourse
@@ -40,9 +31,6 @@ resource_pools:
       ram: 3840
       disk: 4096
       cpu: 2
-    env:
-      bosh:
-        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
 compilation:
   workers: 3
