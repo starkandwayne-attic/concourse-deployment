@@ -8,6 +8,9 @@ resource_pools:
     cloud_properties:
       instance_type: m3.medium
       availability_zone: (( grab meta.availability_zone ))
+    env:
+      bosh:
+        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: db
     network: concourse
@@ -15,6 +18,9 @@ resource_pools:
     cloud_properties:
       instance_type: m3.medium
       availability_zone: (( grab meta.availability_zone ))
+    env:
+      bosh:
+        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: workers
     network: concourse
@@ -22,6 +28,9 @@ resource_pools:
     cloud_properties:
       instance_type: m4.large
       availability_zone: (( grab meta.availability_zone ))
+    env:
+      bosh:
+        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
   - name: haproxy
     network: concourse
@@ -29,6 +38,9 @@ resource_pools:
     cloud_properties:
       instance_type: m4.large
       availability_zone: (( grab meta.availability_zone ))
+    env:
+      bosh:
+        password: (( vault meta.vault_prefix "/vcap_user:crypt" ))
 
 compilation:
   workers: 3
