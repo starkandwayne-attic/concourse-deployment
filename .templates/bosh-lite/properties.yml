@@ -3,16 +3,5 @@ meta:
   authentication:
     basic_auth_username: concourse
     basic_auth_password: (( vault meta.vault_prefix "/web_ui:password" ))
-
-jobs:
-- name: web
-  templates:
-  - name: atc
-    properties:
-      external_url: (( concat "http://" jobs.haproxy.networks.0.static_ips.0 ".xip.io/" ))
-- name: haproxy
-  templates:
-  - name: haproxy
-    properties:
-      ha_proxy:
-        ssl_pem: ~
+  ssl_pem: ~
+  external_url: (( concat "http://" jobs.haproxy.networks.0.static_ips.0 ".xip.io/" ))
