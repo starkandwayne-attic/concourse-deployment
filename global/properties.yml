@@ -50,4 +50,4 @@ jobs:
 properties:
   shield:
     agent:
-      authorized_keys: (( grab meta.shield_authorized_key ))
+      daemon_public_key: (( grab meta.shield_authorized_key ))
