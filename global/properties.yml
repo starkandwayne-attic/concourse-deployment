@@ -37,13 +37,6 @@ jobs:
 
 - name: worker
   templates:
-    - name: slack-notification-resource
-      properties: {}
-    - name: groundcrew
-      properties:
-        additional_resource_types:
-          - image: /var/vcap/packages/slack-notification-resource
-            type: slack-notification
     - name: baggageclaim
       properties: {}
     - name: garden
