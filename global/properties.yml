@@ -2,6 +2,7 @@ meta:
   authentication: (( param "Please specify an authentication parameters here (basic_auth_*/github_auth.*)" ))
   external_url: (( param "What is the external URL for this concourse?" ))
   ssl_pem: (( param "Want ssl? define a pem" ))
+  shield_authorized_key: (( param "Specify the SSH public key from this environment's SHIELD daemon" 
 
 jobs:
 - name: haproxy
@@ -49,4 +50,4 @@ jobs:
 properties:
   shield:
     agent:
-      authorized_keys: (( param "Specify the SSH public key from this environment's SHIELD daemon" ))
+      authorized_keys: (( grab meta.shield_authorized_key ))

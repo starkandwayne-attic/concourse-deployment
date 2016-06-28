@@ -5,3 +5,4 @@ meta:
     basic_auth_password: (( vault meta.vault_prefix "/web_ui:password" ))
   ssl_pem: ~
   external_url: (( concat "http://" jobs.haproxy.networks.0.static_ips.0 ".xip.io/" ))
+  shield_authorized_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwep89cUhcbiqbPuf5iCKxWwZDvrTBzSOr1JC3/mQh3E82MJ2YVXHMdHoRxfdUjBqspKu7v4ooiEifr1RiNk0XDLlBNEYLx2xjJinNA33nJIRZMKfdB2VB8T0o0bkqCIasciKDLuJLV4fuJK6m1Srj+sa1z/ZUIHKjK4Vn8lT0bzADqCgCvzJxmP+1YyUql/QpzUxLNMVhOzVUtZJGggvizYheeRxceBwqYbHqJ3yp8oXJYb4PipD0/3gcCkB6O1Gsk4+y24Sl4OiPkn65LCpai0qQPZ42rw2xOC1Ac2bKWUSOoG5JGlJCFzBL4HQ/Rbxlg7xjV1u6ot+CmPiTEhpz
