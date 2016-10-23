@@ -1,0 +1,5 @@
+---
+meta:
+  authentication:
+    basic_auth_username: concourse
+    basic_auth_password: (( vault meta.vault_prefix "/web_ui:password" ))
