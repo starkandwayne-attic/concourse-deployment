@@ -1,20 +1,7 @@
----
-meta:
-  dns: (( param "Enter the DNS server for your VPC" ))
-  security_groups: (( param "Enter the security groups which should be applied to Concourse VMs" ))
-
 networks:
 - name: concourse
   type: manual
-  subnets:
-  - range: (( param "Enter the CIDR address for this subnet" ))
-    gateway: (( param "Enter the Gateway for this subnet" ))
-    dns: (( grab meta.dns ))
-    static: (( param "Enter the static IP ranges for this subnet" ))
-    reserved: (( param "Enter the reserved IP ranges for this subnet" ))
-    cloud_properties:
-      security_groups: (( grab meta.security_groups ))
-      net_id : (( param "Enter the OpenStack Network ID for this subnet" ))
+  subnets: (( param "Specify your concourse subnet" ))
 
 jobs:
 - name: web
