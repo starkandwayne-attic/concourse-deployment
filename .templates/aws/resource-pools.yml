@@ -22,6 +22,8 @@ resource_pools:
     cloud_properties:
       instance_type: m4.large
       availability_zone: (( grab meta.availability_zone ))
+      ephemeral_disk:
+        size: 60000
 
   - name: haproxy
     network: concourse
