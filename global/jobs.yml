@@ -5,7 +5,7 @@ jobs:
     resource_pool: (( param "Define a resource pool for haproxy" ))
     networks:      (( param "Define the network that haproxy should run on" ))
     templates:
-      - release: cf-haproxy
+      - release: haproxy
         name: haproxy
 
   - name: web
