@@ -7,6 +7,8 @@ resource_pools:
       cpu: 2
       ram: 3_840
       disk: 4_096
+    env:
+      vapp: (( grab meta.type ))
 
   - name: db
     network: concourse
@@ -15,6 +17,8 @@ resource_pools:
       cpu: 2
       ram: 3_840
       disk: 4_096
+    env:
+      vapp: (( grab meta.type ))
 
   - name: workers
     network: concourse
@@ -23,6 +27,8 @@ resource_pools:
       cpu: 2
       ram: 7_680
       disk: 32_768
+    env:
+      vapp: (( grab meta.type ))
 
   - name: haproxy
     network: concourse
@@ -31,6 +37,8 @@ resource_pools:
       cpu: 2
       ram: 3_840
       disk: 4_096
+    env:
+      vapp: (( grab meta.type ))
 
 compilation:
   workers: 3
@@ -40,6 +48,8 @@ compilation:
     cpu: 2
     ram: 4_096
     disk: 8_096
+  env:
+    vapp: (( grab meta.type ))
 
 jobs:
   - name: haproxy
