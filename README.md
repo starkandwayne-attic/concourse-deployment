@@ -2,7 +2,7 @@ concourse Deployments
 ======================================
 
 This repository acts as an upstream repository of YAML templates for use
-in a concourse BOSH deployment, managed via the [Gensis][1] utility.
+in a concourse BOSH deployment, managed via the [Genesis][1] utility.
 
 Creating a new concourse Deployment
 ======================================
